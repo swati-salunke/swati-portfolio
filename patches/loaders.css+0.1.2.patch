@@ -1,0 +1,368 @@
+diff --git a/node_modules/loaders.css/src/animations/ball-grid-beat.scss b/node_modules/loaders.css/src/animations/ball-grid-beat.scss
+index 88885a6..570fab1 100644
+--- a/node_modules/loaders.css/src/animations/ball-grid-beat.scss
++++ b/node_modules/loaders.css/src/animations/ball-grid-beat.scss
+@@ -13,8 +13,8 @@
+ @mixin ball-grid-beat($n:9) {
+   @for $i from 1 through $n {
+     > div:nth-child(#{$i}) {
+-      animation-delay: ((random(100) / 100) - 0.2) + s;
+-      animation-duration: ((random(100) / 100) + 0.6) + s;
++      animation-delay: ((random(100) * 0.01) - 0.2) + s;
++      animation-duration: ((random(100) * 0.01) + 0.6) + s;
+     }
+   }
+ 
+diff --git a/node_modules/loaders.css/src/animations/ball-grid-pulse.scss b/node_modules/loaders.css/src/animations/ball-grid-pulse.scss
+index 8d2b9b4..c27b807 100644
+--- a/node_modules/loaders.css/src/animations/ball-grid-pulse.scss
++++ b/node_modules/loaders.css/src/animations/ball-grid-pulse.scss
+@@ -18,8 +18,8 @@
+ @mixin ball-grid-pulse($n:9) {
+   @for $i from 1 through $n {
+     > div:nth-child(#{$i}) {
+-      animation-delay: ((random(100) / 100) - 0.2) + s;
+-      animation-duration: ((random(100) / 100) + 0.6) + s;
++      animation-delay: ((random(100) * 0.01) - 0.2) + s;
++      animation-duration: ((random(100) * 0.01) + 0.6) + s;
+     }
+   }
+ 
+diff --git a/node_modules/loaders.css/src/animations/ball-scale-multiple.scss b/node_modules/loaders.css/src/animations/ball-scale-multiple.scss
+index ecd61fb..1f7919d 100644
+--- a/node_modules/loaders.css/src/animations/ball-scale-multiple.scss
++++ b/node_modules/loaders.css/src/animations/ball-scale-multiple.scss
+@@ -30,7 +30,7 @@ $size: 60px;
+   @include ball-scale-multiple();
+ 
+   position: relative;
+-  transform: translateY(-$size / 2);
++  transform: translateY(-$size * 0.5);
+ 
+   > div {
+     @include balls();
+diff --git a/node_modules/loaders.css/src/animations/ball-scale-ripple-multiple.scss b/node_modules/loaders.css/src/animations/ball-scale-ripple-multiple.scss
+index ccaa8e4..f91f07e 100644
+--- a/node_modules/loaders.css/src/animations/ball-scale-ripple-multiple.scss
++++ b/node_modules/loaders.css/src/animations/ball-scale-ripple-multiple.scss
+@@ -30,7 +30,7 @@ $size: 50px;
+   @include ball-scale-ripple-multiple();
+ 
+   position: relative;
+-  transform: translateY(-$size / 2);
++  transform: translateY(-$size * 0.5);
+ 
+   > div {
+     @include global-animation();
+diff --git a/node_modules/loaders.css/src/animations/ball-spin-fade-loader.scss b/node_modules/loaders.css/src/animations/ball-spin-fade-loader.scss
+index d0c2638..826fce6 100644
+--- a/node_modules/loaders.css/src/animations/ball-spin-fade-loader.scss
++++ b/node_modules/loaders.css/src/animations/ball-spin-fade-loader.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables';
+ @import '../mixins';
+ @import '../functions';
+@@ -18,8 +20,8 @@ $radius: 25px;
+ @mixin ball-spin-fade-loader($n:8, $start:1) {
+   @for $i from $start through $n {
+     > div:nth-child(#{$i}) {
+-      $iter: 360 / $n;
+-      $quarter: ($radius / 2) + ($radius / 5.5);
++      $iter: math.div(360, $n);
++      $quarter: ($radius * 0.5) + math.div($radius, 5.5);
+ 
+       @if $i == 1 {
+         top: $radius;
+diff --git a/node_modules/loaders.css/src/animations/ball-spin-loader.scss b/node_modules/loaders.css/src/animations/ball-spin-loader.scss
+index 4022908..df84734 100644
+--- a/node_modules/loaders.css/src/animations/ball-spin-loader.scss
++++ b/node_modules/loaders.css/src/animations/ball-spin-loader.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables';
+ @import '../mixins';
+ 
+@@ -15,8 +17,8 @@ $radius: 45px;
+ @mixin ball-spin-loader($n:8, $start:1) {
+   @for $i from $start through $n {
+     > span:nth-child(#{$i}) {
+-      $iter: 360 / $n;
+-      $quarter: ($radius / 2) + ($radius / 5.5);
++      $iter: math.div(360, $n);
++      $quarter: ($radius * 0.5) + math.div($radius, 5.5);
+ 
+       @if $i == 1 {
+         top: $radius;
+diff --git a/node_modules/loaders.css/src/animations/ball-triangle-trace.scss b/node_modules/loaders.css/src/animations/ball-triangle-trace.scss
+index d27e8b5..588b78d 100644
+--- a/node_modules/loaders.css/src/animations/ball-triangle-trace.scss
++++ b/node_modules/loaders.css/src/animations/ball-triangle-trace.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables';
+ @import '../mixins';
+ 
+@@ -5,7 +7,7 @@ $amount: 50px;
+ 
+ @keyframes ball-triangle-path-1 {
+   33% {
+-    transform: translate($amount / 2, -$amount);
++    transform: translate($amount * 0.5, -$amount);
+   }
+   66% {
+     transform: translate($amount, 0px);
+@@ -17,10 +19,10 @@ $amount: 50px;
+ 
+ @keyframes ball-triangle-path-2 {
+   33% {
+-    transform: translate($amount / 2, $amount);
++    transform: translate($amount * 0.5, $amount);
+   }
+   66% {
+-    transform: translate(- $amount / 2, $amount);
++    transform: translate(- $amount * 0.5, $amount);
+   }
+   100% {
+     transform: translate(0px, 0px);
+@@ -32,7 +34,7 @@ $amount: 50px;
+     transform: translate(-$amount, 0px);
+   }
+   66% {
+-    transform: translate(- $amount / 2, -$amount);
++    transform: translate(- $amount * 0.5, -$amount);
+   }
+   100% {
+     transform: translate(0px, 0px);
+@@ -56,7 +58,7 @@ $amount: 50px;
+ .ball-triangle-path {
+   position: relative;
+   @include ball-triangle-path();
+-  transform: translate(-$amount / 1.667, -$amount / 1.333);
++  transform: translate(math.div(-$amount, 1.667), math.div(-$amount, 1.333));
+ 
+   > div {
+     @include global-animation();
+@@ -72,7 +74,7 @@ $amount: 50px;
+     }
+ 
+     &:nth-of-type(2) {
+-      left: $amount / 2;
++      left: $amount * 0.5;
+     }
+ 
+     &:nth-of-type(3) {
+diff --git a/node_modules/loaders.css/src/animations/ball-zig-zag-deflect.scss b/node_modules/loaders.css/src/animations/ball-zig-zag-deflect.scss
+index 7959000..f85ef38 100644
+--- a/node_modules/loaders.css/src/animations/ball-zig-zag-deflect.scss
++++ b/node_modules/loaders.css/src/animations/ball-zig-zag-deflect.scss
+@@ -5,19 +5,19 @@ $amount: 30px;
+ 
+ @keyframes ball-zig-deflect {
+   17% {
+-    transform: translate(-$amount/2, -$amount);
++    transform: translate(-$amount*0.5, -$amount);
+   }
+   34% {
+-    transform: translate($amount/2, -$amount);
++    transform: translate($amount*0.5, -$amount);
+   }
+   50% {
+     transform: translate(0, 0);
+   }
+   67% {
+-    transform: translate($amount/2, -$amount);
++    transform: translate($amount*0.5, -$amount);
+   }
+   84% {
+-    transform: translate(-$amount/2, -$amount);
++    transform: translate(-$amount*0.5, -$amount);
+   }
+   100% {
+     transform: translate(0, 0);
+@@ -26,19 +26,19 @@ $amount: 30px;
+ 
+ @keyframes ball-zag-deflect {
+   17% {
+-    transform: translate($amount/2, $amount);
++    transform: translate($amount*0.5, $amount);
+   }
+   34% {
+-    transform: translate(-$amount/2, $amount);
++    transform: translate(-$amount*0.5, $amount);
+   }
+   50% {
+     transform: translate(0, 0);
+   }
+   67% {
+-    transform: translate(-$amount/2, $amount);
++    transform: translate(-$amount*0.5, $amount);
+   }
+   84% {
+-    transform: translate($amount/2, $amount);
++    transform: translate($amount*0.5, $amount);
+   }
+   100% {
+     transform: translate(0, 0);
+@@ -47,14 +47,14 @@ $amount: 30px;
+ 
+ .ball-zig-zag-deflect {
+   position: relative;
+-  transform: translate(-$amount / 2, -$amount / 2);
++  transform: translate(-$amount * 0.5, -$amount * 0.5);
+ 
+   > div {
+     @include balls();
+     @include global-animation();
+ 
+     position: absolute;
+-    margin-left: $amount / 2;
++    margin-left: $amount * 0.5;
+     top: 4px;
+     left: -7px;
+ 
+diff --git a/node_modules/loaders.css/src/animations/ball-zig-zag.scss b/node_modules/loaders.css/src/animations/ball-zig-zag.scss
+index 4866f48..bff194b 100644
+--- a/node_modules/loaders.css/src/animations/ball-zig-zag.scss
++++ b/node_modules/loaders.css/src/animations/ball-zig-zag.scss
+@@ -5,10 +5,10 @@ $amount: 30px;
+ 
+ @keyframes ball-zig {
+   33% {
+-    transform: translate(-$amount/2, -$amount);
++    transform: translate(-$amount*0.5, -$amount);
+   }
+   66% {
+-    transform: translate($amount/2, -$amount);
++    transform: translate($amount*0.5, -$amount);
+   }
+   100% {
+     transform: translate(0, 0);
+@@ -17,10 +17,10 @@ $amount: 30px;
+ 
+ @keyframes ball-zag {
+   33% {
+-    transform: translate($amount/2, $amount);
++    transform: translate($amount*0.5, $amount);
+   }
+   66% {
+-    transform: translate(-$amount/2, $amount);
++    transform: translate(-$amount*0.5, $amount);
+   }
+   100% {
+     transform: translate(0, 0);
+@@ -29,14 +29,14 @@ $amount: 30px;
+ 
+ .ball-zig-zag {
+   position: relative;
+-  transform: translate(-$amount / 2, -$amount / 2);
++  transform: translate(-$amount * 0.5, -$amount * 0.5);
+ 
+   > div {
+     @include balls();
+     @include global-animation();
+ 
+     position: absolute;
+-    margin-left: $amount / 2;
++    margin-left: $amount * 0.5;
+     top: 4px;
+     left: -7px;
+ 
+diff --git a/node_modules/loaders.css/src/animations/cube-transition.scss b/node_modules/loaders.css/src/animations/cube-transition.scss
+index 2c29170..11e008b 100644
+--- a/node_modules/loaders.css/src/animations/cube-transition.scss
++++ b/node_modules/loaders.css/src/animations/cube-transition.scss
+@@ -21,7 +21,7 @@ $size: 10px;
+ 
+ .cube-transition {
+   position: relative;
+-  transform: translate(-$amount / 2, -$amount / 2);
++  transform: translate(-$amount * 0.5, -$amount * 0.5);
+ 
+   > div {
+     @include global-animation();
+diff --git a/node_modules/loaders.css/src/animations/line-scale-random.scss b/node_modules/loaders.css/src/animations/line-scale-random.scss
+index 0706471..722eeb7 100644
+--- a/node_modules/loaders.css/src/animations/line-scale-random.scss
++++ b/node_modules/loaders.css/src/animations/line-scale-random.scss
+@@ -17,8 +17,8 @@
+ @mixin line-scale-party($n:4) {
+   @for $i from 1 through $n {
+     > div:nth-child(#{$i}) {
+-      animation-delay: ((random(100) / 100) - 0.2) + s;
+-      animation-duration: ((random(100) / 100) + 0.3) + s;
++      animation-delay: ((random(100) * 0.01) - 0.2) + s;
++      animation-duration: ((random(100) * 0.01) + 0.3) + s;
+     }
+   }
+ }
+diff --git a/node_modules/loaders.css/src/animations/line-spin-fade-loader.scss b/node_modules/loaders.css/src/animations/line-spin-fade-loader.scss
+index ed1e9cf..175b09a 100644
+--- a/node_modules/loaders.css/src/animations/line-spin-fade-loader.scss
++++ b/node_modules/loaders.css/src/animations/line-spin-fade-loader.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables';
+ @import '../mixins';
+ @import '../functions';
+@@ -16,8 +18,8 @@ $radius: 20px;
+ @mixin line-spin-fade-loader($n:8, $start:1) {
+   @for $i from $start through $n {
+     > div:nth-child(#{$i}) {
+-      $iter: 360 / $n;
+-      $quarter: ($radius / 2) + ($radius / 5.5);
++      $iter: math.div(360, $n);
++      $quarter: ($radius * 0.5) + math.div($radius, 5.5);
+ 
+       @if $i == 1 {
+         top: $radius;
+diff --git a/node_modules/loaders.css/src/animations/pacman.scss b/node_modules/loaders.css/src/animations/pacman.scss
+index 652a42f..df4d184 100644
+--- a/node_modules/loaders.css/src/animations/pacman.scss
++++ b/node_modules/loaders.css/src/animations/pacman.scss
+@@ -1,6 +1,7 @@
+-@import '../variables';
+-@import '../mixins';
+-@import '../functions';
++@use '../variables' as vars;
++@use '../mixins' as mixins;
++@use '../functions' as funcs;
++
+ 
+ $size: 25px;
+ 
+@@ -32,9 +33,9 @@ $size: 25px;
+     width: 0px;
+     height: 0px;
+     border-right: $size solid transparent;
+-    border-top: $size solid $primary-color;
+-    border-left: $size solid $primary-color;
+-    border-bottom: $size solid $primary-color;
++    border-top: $size solid $brandColor;
++    border-left: $size solid $brandColor;
++    border-bottom: $size solid $brandColor;
+     border-radius: $size;
+ }
+ 
+@@ -43,7 +44,7 @@ $size: 25px;
+     opacity: 0.7;
+   }
+   100% {
+-    transform: translate(-4 * $size, -$size / 4);
++    transform: translate(-4 * $size, -$size * 0.25);
+   }
+ }
+ 
+@@ -85,7 +86,7 @@ $size: 25px;
+     height: 10px;
+ 
+     position: absolute;
+-    transform: translate(0, -$size / 4);
++    transform: translate(0, -$size * 0.25);
+     top: 25px;
+     left: 70px;
+   }

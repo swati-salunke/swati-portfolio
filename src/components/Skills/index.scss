@@ -1,0 +1,153 @@
+.skills-page {
+
+  .text-zone {
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    max-height: 90%;
+  h1 {
+    font-size: 54px;
+    font-family: 'Coolvetica';
+    font-weight: 400;
+    color: #ffd700;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 40px;
+    left: 10px;
+
+    &::before {
+      content: '<h1>';
+      font-family: 'La Belle Aurore';
+      color: #ffd700;
+      font-size: 18px;
+      position: absolute;
+      margin-top: -20px;
+      left: 15px;
+      opacity: 0.6;
+    }
+
+    &::after {
+      content: '</h1>';
+      font-family: 'La Belle Aurore';
+      color: #ffd700;
+      font-size: 18px;
+      line-height: 18px;
+      position: absolute;
+      left: -30px;
+      bottom: -20px;
+      margin-left: 20px;
+      opacity: 0.6;
+    }
+  }
+
+  p {
+    font-size: 16px !important;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 400;
+    min-width: fit-content;
+    animation: pulse 1s;
+    letter-spacing: .6px;
+    word-spacing: 1px;
+    line-height: 1.5em;
+    margin: 10px 0 0 0;
+
+    &:nth-of-type(1) {
+      animation-delay: 1.5s;
+    }
+
+    &:nth-of-type(2) {
+      animation-delay: 1.7s;
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: 1.9s;
+    }
+  }
+  .links
+  {
+    text-decoration: none;
+    color: #ffd700;
+    font-weight: 600;
+  }
+  }
+  .skills {
+    color: #ffd700;
+  }
+
+  .content {
+    width: 50%;
+    height: 500px;
+    top: 10%;
+    margin-left: 0;
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+    .tagcloud {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: auto;
+      width: 50%; // Use full width for better visibility
+      height: 500px; // Set height to ensure enough space for the tag cloud
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color:#ffd700;
+      .tagcloud--item {
+        transition: color 0.3s ease;
+      }
+      
+      .tagcloud--item:hover {
+        color: #fff;
+        font-weight: bold;
+
+      }
+    } 
+  }
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  .text-zone
+  {
+    width: 92%;
+    height: auto;
+    left: 0;
+    box-sizing: border-box;
+    position: relative;
+    transform: translateY(0);
+    margin-top: 80px;
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .content {
+    width: 95% !important;
+    height: 500px !important;
+    top: 100%;
+    left: 2% !important;
+    
+    .tagcloud {
+      width: 30% !important;
+      height: 500px !important;
+      flex-direction: column;
+      bottom: 10% !important;
+      .tagcloud--item {
+        font-size: 15px;
+      }
+    }
+  }
+}
+}
+
+

@@ -1,0 +1,162 @@
+.portfolio-page {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-height: 90%;
+  display: flex;
+
+  .text-zone {
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30%;
+    max-height: 100%;
+
+    h1 {
+      font-size: 53px;
+      font-family: 'Coolvetica';
+      font-weight: 400;
+      color: #ffd700;
+      position: relative;
+      margin-top: 0;
+      margin-bottom: 40px;
+      left: 10px;
+
+      &::before {
+        content: '<h1>';
+        font-family: 'La Belle Aurore';
+        color: #ffd700;
+        font-size: 18px;
+        position: absolute;
+        margin-top: -20px;
+        left: 15px;
+        opacity: 0.6;
+      }
+
+      &::after {
+        content: '</h1>';
+        font-family: 'La Belle Aurore';
+        color: #ffd700;
+        font-size: 18px;
+        line-height: 18px;
+        position: absolute;
+        left: -30px;
+        bottom: -20px;
+        margin-left: 20px;
+        opacity: 0.6;
+      }
+    }
+
+    p {
+      font-size: 16px !important;
+      color: #fff;
+      font-family: sans-serif;
+      font-weight: 400;
+      min-width: fit-content;
+      animation: pulse 1s;
+      letter-spacing: .6px;
+      word-spacing: 1px;
+      line-height: 1.5em;
+      margin: 10px 0 0 0;
+
+      &:nth-of-type(1) {
+        animation-delay: 1.5s;
+      }
+
+      &:nth-of-type(2) {
+        animation-delay: 1.7s;
+      }
+
+      &:nth-of-type(3) {
+        animation-delay: 1.9s;
+      }
+    }
+
+    .button-container {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      row-gap: 30px;
+
+      button {
+        width: 100%;
+        height: 40px;
+        background-color: transparent; // Button color
+        color: #fff;
+        border: 2px solid #115173; // Border color
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ffd700; // Change color on hover
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .project-zone {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    height: auto !important;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+    transform: translateY(0%);
+
+
+    .text-zone {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 0;
+      transform: translateY(0);
+      margin-top: 40px;
+
+      h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .button-container {
+        height: auto !important;
+        margin-bottom: 20px !important;
+      }
+    }
+
+    .project-zone {
+      position: relative;
+      width: 100%;
+      height: auto;
+      right: 0;
+      left: 0;
+      top: 100%;
+      transform: translateY(0%);
+      
+}
+
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

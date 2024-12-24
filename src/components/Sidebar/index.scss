@@ -1,0 +1,204 @@
+.nav-bar {
+  background: #181818;
+  width: 80px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  min-height: 500px;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+
+  .logo {
+    display: block;
+    padding: 8px 0;
+
+    img {
+      display: block;
+      margin: 8px auto 0 auto;
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  .my-photo {
+    display: block;
+    padding: 8px 0;
+
+    img {
+      display: block;
+      margin: auto;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+  }
+
+  nav {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+
+    a {
+      font-size: 22px;
+      color: #4d4d4e;
+      display: block;
+      line-height: 51px;
+      height: 55px;
+      position: relative;
+      text-decoration: none;
+
+      &:after {
+        content: '';
+        /* Default empty content */
+        font-size: 10px;
+        letter-spacing: 2px;
+        position: absolute;
+        bottom: -25px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.3s ease-out;
+      }
+
+      svg {
+        display: inline-block;
+        transition: opacity 0.3s ease-out;
+      }
+
+      &:hover {
+        color: #ffd700;
+
+        svg {
+          opacity: 0;
+        }
+
+        &:after {
+          opacity: 1;
+          color: #ffd700;
+        }
+      }
+
+      &.home-link {
+        &:after {
+          content: 'HOME';
+        }
+      }
+
+      &.about-link {
+        &:after {
+          content: 'ABOUT';
+        }
+      }
+
+      &.portfolio-link {
+        &:after {
+          content: 'MY WORK';
+        }
+      }
+
+      &.skills-link {
+        &:after {
+          content: 'SKILLS';
+        }
+      }
+
+      &.contact-link {
+        &:after {
+          content: 'CONTACT';
+        }
+      }
+    }
+
+    a.active {
+      svg {
+        color: #ffd700;
+      }
+    }
+  }
+
+  ul {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: block;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+
+    li {
+      a {
+        padding: 7px 0;
+        display: block;
+        font-size: 15px;
+        line-height: 16px;
+        color: #4d4d4e;
+
+        &:hover svg {
+          color: #ffd700;
+        }
+      }
+    }
+  }
+
+  // Responsive Styles
+  @media only screen and (max-width: 1024px) {
+    width: 250px;
+    transform: translateX(-250px);
+    /* Sidebar hidden by default */
+    transition: transform 0.3s ease;
+
+    &.nav-open {
+      transform: translateX(0);
+      /* Sidebar slides in */
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    width: 180px;
+
+    .logo,
+    .my-photo {
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    nav a {
+      font-size: 18px;
+      line-height: 40px;
+    }
+  }
+}
+
+// Toggle Button
+.nav-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 4;
+  background: #ffd700;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    font-size: 20px;
+    color: #181818;
+  }
+
+  @media only screen and (min-width: 1025px) {
+    display: none; // Hide toggle button on large screens
+  }
+}

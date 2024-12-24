@@ -1,0 +1,21 @@
+html{
+  font-size: 62.5%;
+}
+body{
+  font-family: 'Helvetica Neue', 'sans-serif';
+  color: #444;
+  background-color: #022c43;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 767px) {
+  body {
+    overflow-x: hidden !important; /* Ensure no horizontal scroll on small screens */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
