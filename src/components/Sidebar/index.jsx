@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
 import { faEnvelope, faUser, faHome, faBrain, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'; // Import icons
 import './index.scss';
-import Logos from './assets/images/logo-s.png';
-import MyPhoto from './assets/images/my-photo.png';
+import Logos from '../../assets/images/logo-s.png';
+import MyPhoto from '../../assets/images/my-photo.png';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/faWhatsapp';
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons/faProjectDiagram';
